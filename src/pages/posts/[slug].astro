@@ -113,7 +113,7 @@ if (postData.tags && postData.tags.length > 0) {
         href={`/posts/${nextPostInSeries.id}`}
         class="button justify-center -mt-8 mb-8 !whitespace-normal text-center flex gap-2 sm:gap-3 items-center"
       >
-        <span>Next: {nextPostInSeries.data.title}</span>
+        <span>다음: {nextPostInSeries.data.title}</span>
         <ChevronsRight class="size-5 hidden sm:block" />
       </a>
     )
@@ -128,14 +128,14 @@ if (postData.tags && postData.tags.length > 0) {
   {
     showSeries && series ? (
       <section>
-        <DividerText text={`${series.title} Series`} />
+        <DividerText text={`${series.title} 시리즈`} />
         {series.entries.map((seriesPost) => (
           <PostPreview post={seriesPost} />
         ))}
       </section>
     ) : prev || next ? (
       <section>
-        <DividerText text="More Posts" />
+        <DividerText text="다른 글" />
         {prev && <PostPreview post={prev} />}
         {next && <PostPreview post={next} />}
       </section>
@@ -144,7 +144,7 @@ if (postData.tags && postData.tags.length > 0) {
   {
     siteConfig.giscus && (
       <section>
-        <DividerText text="Comments" />
+        <DividerText text="댓글" />
         <GiscusLoader />
       </section>
     )

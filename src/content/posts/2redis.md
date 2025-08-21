@@ -1,0 +1,206 @@
+---
+title: "2.Redis를 사용한 동시성 제어"
+description: "GitHub 링크 동시성 제어란? 동시성 제어는 여러 사용자 또는 프로세스가 동시에 데이터에 접근할 때 데이터의 일관성과 무결성을 유지하기 위한 기술이다. 분산 락을 이용한 동시성 제어 게시글 CRUD 를 간단하게 구현하고 게시글에 좋아요 기능을 추가 parallel() 메서드를 사용하여 병렬 처리를 통해 좋아요 기능 수행. 각 좋아요 클릭 이벤트가 게시글에 영향을 주기 전에 분산 락을 획득하여 데이터 일관성 유지. 처리가 끝난 후..."
+published: "2024-04-08T15:00:00.000Z"
+tags: []
+series: "과거 Hashnode"
+---
+
+[GitHub 링크](https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/1.Redis%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%9C%20%EB%8F%99%EC%8B%9C%EC%84%B1%20%EC%A0%9C%EC%96%B4.md)
+
+## 동시성 제어란?
+
+* 동시성 제어는 여러 사용자 또는 프로세스가 동시에 데이터에 접근할 때 데이터의 일관성과 무결성을 유지하기 위한 기술이다.
+    
+
+## 분산 락을 이용한 동시성 제어
+
+> 1. 게시글 CRUD 를 간단하게 구현하고 게시글에 좋아요 기능을 추가
+>     
+> 2. parallel() 메서드를 사용하여 병렬 처리를 통해 좋아요 기능 수행.
+>     
+> 3. 각 좋아요 클릭 이벤트가 게시글에 영향을 주기 전에 분산 락을 획득하여 데이터 일관성 유지.
+>     
+> 4. 처리가 끝난 후 락 해제하여 다음 이벤트 처리 가능하도록 함.
+>     
+
+## 사용한 라이브러리
+
+* redissonClient
+    
+
+## 실습코드
+
+### Post Entity
+
+```java
+@Entity
+@Getter
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+    private String content;
+    private int likeCount;
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    public Post(PostRequest postRequest) {
+        this.title = postRequest.getTitle();
+        this.content = postRequest.getContent();
+        this.likeCount = 0;
+    }
+    public void updatePost(PostRequest postRequest){
+        this.title = postRequest.getTitle();
+        this.content = postRequest.getContent();
+    }
+    public void setCount(int likeCount){
+        this.likeCount = likeCount;
+    }
+
+}
+```
+
+### Post Service(좋아요 관련 기능)
+
+```java
+   //좋아요 초기화
+    @Transactional
+    public void reset(){
+        Post post = postRepository.findById(1L).orElseThrow(()->new IllegalArgumentException("게시글이 없습니다."));
+        post.setCount(0);
+        postRepository.save(post);
+    }
+    //레디스 락을 이용한 좋아요 증가
+    //분산 락을 획득하는 메서드
+    public PostResponse updateLikeUsingLock(Long id) {
+        //락 키
+        RLock lock = redissonClient.getFairLock(LOCK_KEY);
+        boolean isLocked = false;
+        try {
+            // 락 획득 시도
+            isLocked = lock.tryLock(10, 60, TimeUnit.SECONDS);
+            if (isLocked) {
+                // 락 획득에 성공하면, 트랜잭션을 포함하는 데이터베이스 작업을 수행
+                return postLikeService.updateLikeCount(id);
+            } else {
+                // 락 획득에 실패하면 예외 발생
+                throw new IllegalStateException("잠금을 획득하지 못했습니다.");
+            }
+        } catch (InterruptedException e) {
+            // 현재 스레드가 잠금을 획득하는 동안 인터럽트 발생. 스레드에 인터럽트 상태를 설정하고 예외를 던짐.
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("잠금 획득 중단", e);
+        } finally {
+            if (isLocked) {
+                // 반드시 락 해제
+                lock.unlock();
+            }
+        }
+    }
+    //레디스 캐시 데이터 삭제
+    public void deleteCache(Long postKey) {
+        String Key = "post: " + postKey;
+        stringRedisTemplate.delete(Key);
+    }
+    //좋아요 출력 코드
+    public void printCount() {
+        System.out.println("\n\n\n====================\n");
+        System.out.println(postRepository.findById(1L).orElseThrow().getLikeCount());
+        System.out.println("\n====================\n\n\n");
+    }
+```
+
+### 테스트 코드
+
+```java
+@SpringBootTest
+public class PostServiceTest {
+    private PostRequest postRequest;
+    @Autowired
+    private PostService postService;
+    @BeforeEach
+    void set() {
+        postRequest = new PostRequest("test", "content");
+        postService.create(postRequest);
+    }
+    @AfterEach
+    void reset() {
+        postService.reset();
+    }
+
+    @Test
+    @DisplayName("단순 좋아요 증가 코드")
+    void test() {
+        IntStream.range(0, 100).parallel().forEach(i -> postService.updateLike(1L));
+        System.out.println("\n\n\n\n[테스트]");
+        postService.printCount();
+    }
+
+    @Test
+    @DisplayName("동시성 제어")
+    void test2() {
+        IntStream.range(0, 100).parallel().forEach(i -> postService.updateLikeUsingLock(1L));
+        System.out.println("\n\n\n\n[테스트]");
+        postService.printCount();
+    }
+}
+```
+
+## 결과
+
+### 단순 좋아요 증가 코드 결과
+
+* 예상 좋아요 수: 100
+    
+* 실제 좋아요 수: X (17)
+    
+* 분석: 동시성 제어가 없을 경우 X회만큼의 좋아요가 정상 반영됨. 이는 병렬 처리 중 발생하는 경쟁 상황에 의해 좋아요 수가 손실됨을 알수있음.
+    
+
+[![스크린샷 2024-04-02 오전 3 57 14](https://private-user-images.githubusercontent.com/47919911/318541579-3abd0e92-b3b6-4c4c-8148-c5199b2eec29.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQzNjAxNTYsIm5iZiI6MTcxNDM1OTg1NiwicGF0aCI6Ii80NzkxOTkxMS8zMTg1NDE1NzktM2FiZDBlOTItYjNiNi00YzRjLTgxNDgtYzUxOTliMmVlYzI5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDI5VDAzMDQxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI2NTE3YmRkOGFkOTU2NTc0ZDY3YTEzMTQ5MTdiNThjZjQzODgyYjY4MDBlNjY3YTUyNTg5ZTdiYmEzYjIwZTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ni-jHrgQxURyuJPZpoTe-VHDeHxkpL6RdsTrvGQ6nFg align="left")](https://private-user-images.githubusercontent.com/47919911/318541579-3abd0e92-b3b6-4c4c-8148-c5199b2eec29.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQzNjAxNTYsIm5iZiI6MTcxNDM1OTg1NiwicGF0aCI6Ii80NzkxOTkxMS8zMTg1NDE1NzktM2FiZDBlOTItYjNiNi00YzRjLTgxNDgtYzUxOTliMmVlYzI5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDI5VDAzMDQxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI2NTE3YmRkOGFkOTU2NTc0ZDY3YTEzMTQ5MTdiNThjZjQzODgyYjY4MDBlNjY3YTUyNTg5ZTdiYmEzYjIwZTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ni-jHrgQxURyuJPZpoTe-VHDeHxkpL6RdsTrvGQ6nFg)
+
+### 동시성 제어 좋아요 증가 코드 결과
+
+* 예상 좋아요 수: 100
+    
+* 실제 좋아요 수: Y (100)
+    
+* 분석: 분산 락을 사용한 동시성 제어가 올바르게 작동하여, 모든 병렬 처리가 정확하게 반영되어 Y회의 좋아요가 정상 반영됨.
+    
+
+[![스크린샷 2024-04-02 오전 4 05 48](https://private-user-images.githubusercontent.com/47919911/318541690-0e101ca5-0531-4f86-9c6c-d89fadee0622.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQzNjAxNTYsIm5iZiI6MTcxNDM1OTg1NiwicGF0aCI6Ii80NzkxOTkxMS8zMTg1NDE2OTAtMGUxMDFjYTUtMDUzMS00Zjg2LTljNmMtZDg5ZmFkZWUwNjIyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDI5VDAzMDQxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNmIyYzQwNmViZmU4MWQyOWY2YmViZmI2MDdhZDUxZDYwNDI0NzVjNzRlZDdjMWQ5ZDNhY2M4M2Q4Zjk0NjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.5HDiv8NviW3pmdNNiHUzj-VvEFse4L66aL75K-FPGb0 align="left")](https://private-user-images.githubusercontent.com/47919911/318541690-0e101ca5-0531-4f86-9c6c-d89fadee0622.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQzNjAxNTYsIm5iZiI6MTcxNDM1OTg1NiwicGF0aCI6Ii80NzkxOTkxMS8zMTg1NDE2OTAtMGUxMDFjYTUtMDUzMS00Zjg2LTljNmMtZDg5ZmFkZWUwNjIyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDI5VDAzMDQxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNmIyYzQwNmViZmU4MWQyOWY2YmViZmI2MDdhZDUxZDYwNDI0NzVjNzRlZDdjMWQ5ZDNhY2M4M2Q4Zjk0NjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.5HDiv8NviW3pmdNNiHUzj-VvEFse4L66aL75K-FPGb0)
+
+## 개발 중 직면한 문제점
+
+* 결과 값이 100이 나와야 하는데 50이 나오는 문제 발생
+    
+
+## 해결책
+
+* 기존에는 락 획득과 데이터 처리 로직이 함께 있어 동시성 문제가 발생하여 결과가 50이 나왔다.
+    
+* 데이터 처리 로직을 별도의 서비스 클래스로 분리하고 트랜잭션을 적용하여 동시성 제어와 데이터 일관성을 보장함으로써 문제를 해결했다.
+    
+
+```java
+@Service
+@RequiredArgsConstructor
+public class PostLikeService {
+
+    private final PostRepository postRepository;
+
+    @Transactional
+    public PostResponse updateLikeCount(Long id) {
+        Post post = postRepository.findById(id)
+            .orElseThrow(() -> new IllegalStateException("Post not found with id: " + id));
+        post.setCount(post.getLikeCount() + 1);
+        postRepository.save(post);
+        return new PostResponse(post);
+    }
+}
+```

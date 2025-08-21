@@ -6,6 +6,7 @@ import Pagination from '~/components/Pagination.astro'
 import siteConfig from '~/site.config'
 import PostPreview from '~/components/PostPreview.astro'
 import PageHeader from '~/components/PageHeader.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -14,18 +15,61 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths
 
 const { page } = Astro.props
-const pageTitle = 'Archive' + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
+const pageTitle = '전체 글' + (page.currentPage > 1 ? ` - 페이지 ${page.currentPage}` : '')
+
+// Page 1: split the current paginated slice into current vs archived
+let currentPosts = []
+let archivedPosts = []
+if (page.currentPage === 1) {
+  archivedPosts = page.data.filter(
+    (p) => p.data.series && p.data.series.includes('과거'),
+  )
+  currentPosts = page.data.filter(
+    (p) => !(p.data.series && p.data.series.includes('과거')),
+  )
+}
 ---
 
-<Layout title={pageTitle} description="All posts in the archive">
+<Layout title={pageTitle} description="전체 글 목록">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    {page.data.map((post) => <PostPreview post={post} />)}
-    <Pagination
-      prevLink={page.url.prev ? page.url.prev : undefined}
-      prevText="Newer Posts"
-      nextLink={page.url.next ? page.url.next : undefined}
-      nextText="Older Posts"
-    />
+    {
+      page.currentPage === 1 ? (
+        <>
+          {currentPosts.length > 0 && (
+            <section>
+              <BlockHeader>현재 글</BlockHeader>
+              {currentPosts.map((post) => (
+                <PostPreview post={post} />
+              ))}
+            </section>
+          )}
+          {archivedPosts.length > 0 && (
+            <section>
+              <BlockHeader>아카이브</BlockHeader>
+              {archivedPosts.map((post) => (
+                <PostPreview post={post} />
+              ))}
+            </section>
+          )}
+          <Pagination
+            prevLink={page.url.prev ? page.url.prev : undefined}
+            prevText="최신 글"
+            nextLink={page.url.next ? page.url.next : undefined}
+            nextText="이전 글"
+          />
+        </>
+      ) : (
+        <>
+          {page.data.map((post) => <PostPreview post={post} />)}
+          <Pagination
+            prevLink={page.url.prev ? page.url.prev : undefined}
+            prevText="최신 글"
+            nextLink={page.url.next ? page.url.next : undefined}
+            nextText="이전 글"
+          />
+        </>
+      )
+    }
   </div>
 </Layout>

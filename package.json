@@ -9,7 +9,8 @@
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "new": "node scripts/new-post.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.2",
@@ -48,6 +49,7 @@
     "satori": "^0.15.2",
     "satori-html": "^0.3.2",
     "tailwindcss": "^4.1.11",
+    "turndown": "^7.2.1",
     "typescript": "^5.8.3",
     "unified": "^11.0.5"
   },
