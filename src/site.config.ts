@@ -4,7 +4,7 @@ const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
   site: 'https://study.thunderlab-blog.com',
   // The name of your site, used in the title and for SEO.
-  title: '임베디드 공부 블로그',
+  title: 'thunderDev',
   // The description of your site, used for SEO and RSS feed.
   description: '개발 공부 기록',
   // The author of the site, used in the footer, SEO, and RSS feed.
