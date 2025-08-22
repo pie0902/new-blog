@@ -2,7 +2,7 @@
 title: "2.Java 변수"
 description: "자바 변수에 대해서 정리를 해봤습니다. 정수 실수 문자열에 대해서 써봤습니다. public class Hello { public static void main(String[] args) { //정수 int a = 1; //실수 float b = 1.2f; double bb = 1.2; /* float과 double의 차이 : ..."
 published: "2023-12-18T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

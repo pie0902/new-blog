@@ -2,7 +2,7 @@
 title: "BerkInsert를 사용한 쿼리 개선"
 description: "문제가 발견된 코드 //post 생성 @Transactional public PostResponse createPost( PostRequest postRequest, HttpServletRequest request, Long boardId ){ //토큰 생성 String token = jwtUtils.validateTokenOrThrow(request); //userId 추..."
 published: "2024-07-03T05:57:26.948Z"
-tags: []
+tags: ['Java', 'JWT']
 series: "과거 Hashnode"
 ---
 

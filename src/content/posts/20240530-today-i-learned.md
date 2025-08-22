@@ -2,7 +2,7 @@
 title: "2024.05.30 Today I Learned"
 description: "맨날 까먹지만 거의 맨날 사용하는 명령어 ./gradlew clean./gradlew test jacocoTestReport 이미지 관련 명령어 docker images: 로컬에 다운로드된 이미지 목록 확인 docker pull 이미지명: 원격 레지스트리에서 이미지 다운로드 docker rmi 이미지명: 로컬에서 이미지 삭제 컨테이너 관련 명령어 docker ps: 실행 중인 컨테이너 목록 확인 docker ps -a: 모든 컨테이..."
 published: "2024-05-29T15:00:00.000Z"
-tags: []
+tags: ['TIL']
 series: "과거 Hashnode"
 ---
 

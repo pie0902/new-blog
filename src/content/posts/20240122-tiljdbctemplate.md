@@ -2,7 +2,7 @@
 title: "2024.01.22 TIL(JdbcTemplate)"
 description: "오늘의 마음가짐 💡 오늘의 학습 키워드 #스프링 #MySQL ✔️ 오늘의 Todo List 스프링 강의 수강 스프링 실습 과제 시작 ✏️오늘의 기록 JdbcTemplate 데이터베이스와 상호 작용하는 방법을 제공 JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // 데이터베이스 연결 설정 // SQL 쿼리 실행 및 결과 조회 List<String> names = jdbcTe..."
 published: "2024-01-21T15:00:00.000Z"
-tags: []
+tags: ['Java', 'MySQL', 'SQL', 'TIL']
 series: "과거 Hashnode"
 ---
 

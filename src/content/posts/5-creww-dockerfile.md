@@ -2,7 +2,7 @@
 title: "5. creww dockerfile 작성"
 description: "Dockerfile 작성 및 빌드: Dockerfile 작성: Creww 프로젝트의 배포를 위해 Dockerfile을 작성. Dockerfile에는 애플리케이션의 환경 설정 및 의존성 설치 명령어를 포함하여 컨테이너 이미지를 생성한다. 빌드: 작성된 Dockerfile을 사용하여 Docker 이미지를 빌드했다. 빌드된 이미지를 통해 일관된 환경에서 애플리케이션을 실행할 수 있게 되었다. nas에서 실행시키기 위해 docker h..."
 published: "2024-05-25T15:00:00.000Z"
-tags: []
+tags: ['JWT', '프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 

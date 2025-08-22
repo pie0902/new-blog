@@ -2,7 +2,7 @@
 title: "4.배포 환경을 위한 단일 Redis 인스턴스: AWS ElasticCache 활용법"
 description: "..::.. .:+*##++==:. / \ \ / / ___| ..=*######+++++++-.. / _ \ \ /\ / /\___ \ -############**++++= / ___ \ V V / _..."
 published: "2024-04-10T15:00:00.000Z"
-tags: []
+tags: ['Java', 'Redis', 'AWS']
 series: "과거 Hashnode"
 ---
 

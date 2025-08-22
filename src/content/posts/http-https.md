@@ -2,7 +2,7 @@
 title: "Http & Https 를 공부하자"
 description: "HTTP란?(HyperText Transfer Protocol) 인터넷에서 클라이언트와 서버가 자원을 주고 받을 때 쓰는 통신 규약이다. HTTP의 구조는 요청/응답 (Request/Response) 구조로 되어있다. HTTP 요청 (Requset) HTTP의 메소드는 웹 서버에 대한 다양한 요청을 나타낸다. HTTP의 주요 메서드는 GET/POST/PUT/DELETE/PATCH 등이 있다. 헤더(Headers) 는 요청에 대한..."
 published: "2024-06-23T05:26:23.780Z"
-tags: []
+tags: ['HTTP', 'HTTPS', '네트워크']
 series: "과거 Hashnode"
 ---
 

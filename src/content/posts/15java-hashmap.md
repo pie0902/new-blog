@@ -2,7 +2,7 @@
 title: "15.Java HashMap 다시 복습"
 description: "알고리즘 문제를 풀다가 기초 문법이 부실하다는 생각이 들었다.이론으로 알고있는 것과 손가락으로 두들겨본 코드는 다르니.. 그래서 복습을 진행했다. 1. 그룹화 애너그램 그룹화: 문자열 배열 strs가 주어졌을 때, 애너그램(문자를 재배열하여 다른 단어를 만들 수 있는 단어)끼리 그룹화하는 프로그램을 작성하세요.HashMap을 사용하여 애너그램 그룹을 관리하고, 결과를 출력하세요. import java.util.ArrayList; import..."
 published: "2024-06-27T06:08:46.599Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

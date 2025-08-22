@@ -2,7 +2,7 @@
 title: "네트워크 계층"
 description: "네트워크 계층 네트워크는 원하는 정보를 원하는 수신자 또는 기기에 정확하게 전송하기 위한 기반 인프라이다. OSI 7계층 (지겹지만 반복) OSI 7계층은 국제 표준화 기구인 ISO(International Standardization Organization)에서 개발한 컴퓨터 네트워크 프로토콜 디자인과 통신을 계층으로 나누어 설명한 개방형 시스템 상호 연결 모델이다. 각 계층은 서로 독립적으로 구성되어 있고, 각 계층은 하위 계층의 기..."
 published: "2024-07-29T09:46:06.397Z"
-tags: []
+tags: ['네트워크']
 series: "과거 Hashnode"
 ---
 

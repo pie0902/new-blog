@@ -2,7 +2,7 @@
 title: "4.MySQL - 업무 필요한 문자 포맷이 다를 때, SQL 로 가공하기 (REPLACE, SUBSTRING, CONCAT)"
 description: "SQL 에서는 특정 문자를 다른 것으로 바꿀 수 있는 기능을 제공합니다 함수명 : replace 사용 방법 SQL replace(바꿀 컬럼, 현재 값, 바꿀 값) 예전에 ‘문곡리’ 라는 지명이 ‘문가리’ 로 바뀌었어요 (주소의 ‘문곡리’ 를 ‘문가리’ 로 바꾸기) select addr, REPLACE (addr, \"문곡리\",\"문가리\") FROm food_orders where addr like \"%문곡리%\" 전체 데이터가 아닌 특정 문자만 ..."
 published: "2023-12-17T15:00:00.000Z"
-tags: []
+tags: ['MySQL', 'SQL']
 series: "과거 Hashnode"
 ---
 

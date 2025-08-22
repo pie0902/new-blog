@@ -2,7 +2,7 @@
 title: "2024.01.19 TIL (Spring)"
 description: "오늘의 마음가짐 💡 오늘의 학습 키워드 #스프링 #GitHub ✔️ 오늘의 Todo List 스프링 강의 수강 스프링 실습 TIL 리뉴얼 1주 차 수업 내 거로 만들기 ✏️오늘의 기록 Spring 프로젝트 생성 build.gradle로 간편하게 설정 바꿀 수 있음 오늘 알게 된 라이브러리 spring-boot-starter-web : Spring MVC와 Tomcat 웹 서버를 포함 매우 편리하게 Controller, S..."
 published: "2024-01-18T15:00:00.000Z"
-tags: []
+tags: ['Spring', 'TIL']
 series: "과거 Hashnode"
 ---
 

@@ -2,7 +2,7 @@
 title: "배치 조회 전략 을 사용한 쿼리 개선"
 description: "관리자 페이지에서 상품마다 생긴 주문 상세를 조회 할 때 N+1 문제가 발생 했다.상품을 불러오고 주문서를 불러오고 주문 상세를 불러올 때마다 데이터베이스에서 관련 데이터들을 계속 조회 하면서 데이터를 가져온다. productService 에서 관리자의 상품 조회 코드 productAdminDto @Getter public class ProductAdminResponse { private Long id; private..."
 published: "2024-04-25T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

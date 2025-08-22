@@ -2,7 +2,7 @@
 title: "4. creww 조회수 기능"
 description: "일단 조회수 기능이 없는 것 같아서 postService에 게시글 조회수를 표시해주는 로직을 한개 더 추가했다. @Entity @Getter @NoArgsConstructor @Table(name = \"post\") public class Post extends BaseEntity { @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id; pr..."
 published: "2024-05-24T15:00:00.000Z"
-tags: []
+tags: ['Java', '프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 

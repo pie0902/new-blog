@@ -2,7 +2,7 @@
 title: "test test"
 description: "Translate 안녕하세요"
 published: "2024-06-28T03:18:22.197Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

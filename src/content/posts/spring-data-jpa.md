@@ -2,7 +2,7 @@
 title: "Spring Data JPA를 활용한 리뷰 생성 로직 구현"
 description: "리뷰 생성 조건 클라이언트가 주문한 횟수 만큼 리뷰 작성 제한 사용자는 특정 상품을 주문한 횟수와 동일한 수의 리뷰만 작성할 수 있다. 구현 방법 주문 횟수 조회 사용자 ID와 상품 ID를 기준으로 해당 사용자의 특정 상품에 대한 주문 횟수를 조회한다. long orderCount = orderDetailRepository.countByUserIdAndProductId(userId, productId); OrderDetailRep..."
 published: "2024-04-04T15:00:00.000Z"
-tags: []
+tags: ['Java', 'JPA', 'Spring']
 series: "과거 Hashnode"
 ---
 

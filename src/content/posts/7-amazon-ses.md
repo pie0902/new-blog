@@ -2,7 +2,7 @@
 title: "7.동시성 제어에서 주문 취소 통보: Amazon SES를 활용한 메일 전송 전략"
 description: "Amazon SimpleEmailService란? AWS Simple Email Service (SES)는 아마존 웹 서비스(AWS)가 제공하는 확장 가능한 이메일 전송 서비스다. 이 서비스는 기업이 마케팅, 알림, 트랜잭션 이메일을 손쉽게 보낼 수 있도록 설계되었다. AWS SES는 높은 전달성, 강력한 인증 기능, 그리고 광범위한 모니터링으로 이메일 관리의 복잡성을 감소시켜 준다. 주요 기능 이메일 전송: AWS SES를 사용하면 HTML..."
 published: "2024-04-13T15:00:00.000Z"
-tags: []
+tags: ['AWS', 'SES']
 series: "과거 Hashnode"
 ---
 

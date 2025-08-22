@@ -2,7 +2,7 @@
 title: "6.MySQL - Subquery와 Join"
 description: "select order_id, restaurant_name, if(over_time>=0, over_time, 0) over_time from ( select order_id, restaurant_name, food_preparation_time-25 over_time from food_orders ) a 서브쿼리란) 이런식으로 ()로 묶어서 조건을 지정해준다음 그 위에 SELECT문에서 조건문을 한번더 지정해줌으로써 가독성을 향상시킬수 있..."
 published: "2023-12-19T15:00:00.000Z"
-tags: []
+tags: ['MySQL', 'SQL']
 series: "과거 Hashnode"
 ---
 

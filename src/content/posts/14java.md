@@ -2,7 +2,7 @@
 title: "14.Java 키오스크 만들기"
 description: "https://github.com/pie0902/kiosk GitHub - pie0902/kiosk Kiosk Project 간단 설명 안녕하세요. 이번 프로젝트는 키오스크를 자바 코드로 간단하게 구현하는 프로젝트입니다.키오스크 프로젝트는 스파르타 코딩클럽 내일 배움 캠프에 합류한 이후 첫 개인과제입니다.콘솔창에 아래와 같이 출력이 돼야 합니다. 필수 요구사항 Java 클래스 설계 시 필수 요구사항! 메뉴 클래스는 이름, 설명 필드를 가지는 ..."
 published: "2024-01-06T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

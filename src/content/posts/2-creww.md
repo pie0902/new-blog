@@ -2,7 +2,7 @@
 title: "2. creww 프로젝트 기술 스택"
 description: "우리집에는 2009년산 qnap nas가 있다. nas를 사용해서 배포를 하려는 목적은 서버 운영비 절약 정말 이 목적 한개를 중심으로 계획을 세웠다. 그래서 알아봤는데 우리집 nas를 qnap gui로 실행시키면 스프링 8버전 이상은 지원을 안하고 (cpu 호환이 안됨) 도커도 실행이 안된다. 그래서 알아보고 알아보다가 openmediavalut를 설치했다. 그리고 계획을 다시 세웠다. Creww 프로젝트: 기술 스택과 프론트엔드 구현 과..."
 published: "2024-05-20T15:00:00.000Z"
-tags: []
+tags: ['Spring', 'MySQL', 'SQL', '프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 

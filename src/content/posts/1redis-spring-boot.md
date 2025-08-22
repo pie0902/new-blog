@@ -2,7 +2,7 @@
 title: "1.Redis 캐싱으로 Spring Boot 애플리케이션 속도 향상시키기"
 description: "Redis란? _._ _.-``__ ''-._ Redis란 오픈 소스 인메모리 데이터 구조 저장소로, _.-`` `. `_. ''-._ 다양한 데이터 구조를 지원하는 key-value 스토어 이다. .-`` .-```. ```\/ _.,_ ''-._ 주로 캐시, 세션 관리, 실시간 분석, 메시징 등의 용도로 사용된..."
 published: "2024-04-07T15:00:00.000Z"
-tags: []
+tags: ['Spring', 'Redis']
 series: "과거 Hashnode"
 ---
 

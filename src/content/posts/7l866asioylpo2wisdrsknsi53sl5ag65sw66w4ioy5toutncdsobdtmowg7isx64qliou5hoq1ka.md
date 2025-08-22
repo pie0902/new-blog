@@ -2,7 +2,7 @@
 title: "쿼리 실행 방식에 따른 카드 조회 성능 비교"
 description: "Card 엔티티 @Table(name=\"card\") public class Card extends BaseEntity { @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private long id; private String title; private String content; @Column(name = \"deadline\"..."
 published: "2024-03-24T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

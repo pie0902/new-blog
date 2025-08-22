@@ -2,7 +2,7 @@
 title: "testcode 정리"
 description: "테스트 코드는 중요하다. 하지만 어렵게 느껴질 수 있다. 좀 더 쉽게 생각하고 접근할 필요가 있다. 예를 들어, Add라는 클래스에 addNumber라는 함수가 있다고 가정해 보자. public class Add{ public int addNumber(int a, int b){ return a+b; } } 위 코드에 대해 테스트 코드를 작성하는 것은 addNumber 함수의 매개변수에 int a와 int b를 넣..."
 published: "2024-06-12T17:47:11.970Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

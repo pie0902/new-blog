@@ -2,7 +2,7 @@
 title: "11. creww Architecture Diagram"
 description: "크루의 아키텍처 다이어그램을 만들었다. 미리 만들었어야 했는데 아직 진행중인 프로젝트라서.. 계속 수정될 예정이다. I have created an architecture diagram for Creww project. I should have made it earlier, but since it's an ongoing project... it's expected to be continually updated. Architecture Diagr..."
 published: "2024-06-29T07:00:53.134Z"
-tags: []
+tags: ['다이어그램', '프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 

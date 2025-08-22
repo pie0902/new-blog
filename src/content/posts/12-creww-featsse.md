@@ -2,7 +2,7 @@
 title: "12. creww 알림 숫자 구현 feat.SSE"
 description: "알림 버튼 옆에 알림이 몇개 있는지 알려주는 기능을 구현하려고 한다. 보통 새로운 기능 구현 시 구글링이나 GPT를 통해 구현 방식을 알아보고 결정한다. 그러나 Creww의 CRUD를 개발하는 과정에서, Notification 클래스를 작성할 때는 별 생각없이 나만의 방식으로.. 알림 기능을 구현하였다. 구현 순서를 정리하자면 PostService 클래스의 createPost 메서드에서 새로운 post 객체가 생성된다. 생성된 Post 객체..."
 published: "2024-07-10T07:29:59.077Z"
-tags: []
+tags: ['프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 

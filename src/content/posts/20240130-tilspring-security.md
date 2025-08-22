@@ -2,7 +2,7 @@
 title: "2024.01.30 TIL(spring security)"
 description: "Spring Security 💡 오늘의 학습 키워드 #스프링 #GitHub ✔️ 오늘의 Todo List JWT SpringSecurity 인증과 인 1. Spring Securiy 프레임워크는 Spring 서버에 필요한 인증 및 인가를 위해 많은 기능을 제공해 줌으로써 개발의 수고를 덜어 준다. build.gradle에 Spring Security 프레임워크를 추가한다. Spring Security를 활성화 한다. WebSe..."
 published: "2024-01-29T15:00:00.000Z"
-tags: []
+tags: ['Spring', 'Spring Security', 'JWT', 'TIL']
 series: "과거 Hashnode"
 ---
 

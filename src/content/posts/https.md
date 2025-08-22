@@ -2,7 +2,7 @@
 title: "Https를 공부하자"
 description: "HTTPS는 HTTP의 보안 버전으로, 인터넷을 통해 데이터를 안전하게 전송하기 위해 사용된다. HTTPS는 데이터 암호화, 데이터 무결성, 인증을 통해 보안을 제공한다. 주요 원리 SSL/TLS 프로토콜 사용: HTTPS는 SSL(Secure Sockets Layer) 또는 TLS(Transport Layer Security) 프로토콜을 사용하여 데이터를 암호화 한다. 이 프로토콜은 클라이언트와 서버 간의 안전한 통신 채널을 제공한다. 암..."
 published: "2024-06-23T05:31:36.668Z"
-tags: []
+tags: ['Spring Security', 'HTTPS', 'HTTP', '네트워크']
 series: "과거 Hashnode"
 ---
 

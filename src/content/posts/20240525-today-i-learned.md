@@ -2,7 +2,7 @@
 title: "2024.05.25 Today I Learned"
 description: "TIL: 2024-05-25 토요일 오늘의 목표 Test Code에 대한 경각심 학습한 내용 이번 creww project에서는 테스트 커버리지 90% 이상이 목표다. 그래서 mock에 대해서 공부했다. Mocking이란? Mocking은 테스트 환경에서 의존성을 시뮬레이션하는 기법이다. 실제 객체 대신 가짜 (Mock) 객체를 사용하여 테스트를 수행한다. 이를 통해 테스트가 독립적으로 실행되며, 외부 시스템(데이터베이스,네트워크 등)..."
 published: "2024-05-24T15:00:00.000Z"
-tags: []
+tags: ['네트워크', 'TIL']
 series: "과거 Hashnode"
 ---
 

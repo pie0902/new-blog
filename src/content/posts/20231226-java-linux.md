@@ -2,7 +2,7 @@
 title: "2023.12.26 Java기초 학습/Linux설치"
 description: "오늘은 팀별과제를 거의 다 완성해서 새로운 오늘의 목표를 세워봤습니다. 1.Arch Linux가 설치된 노트북 Ubuntu환경으로 재설치하기 2.Java의 기초를 학습하기 1번 목표) arch linux의 극악 난이도 설치를 겪어봤기 때문에 ubuntu 설치는 별로 어렵지가 않았습니다. rafus를 사용해서 설치 usb를 만든 후 아주 친절하게 하라는 대로 했더니 바로 설치가 됐습니다. gnome 테마를 약간 만지고 구글 크롬과 IntelliJ..."
 published: "2023-12-25T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

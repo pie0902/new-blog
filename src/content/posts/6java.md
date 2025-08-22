@@ -2,7 +2,7 @@
 title: "6.Java 계산기 만들기"
 description: "가장 훌륭한 학습방법은 직접 실습으로 작은 프로젝트부터 만드는것이라고 생각합니다. 그래서 간단한 사칙연산을 할수있는 계산기를 작성해봤습니다. import java.util.Scanner; class Calculator{ public static int add(int a, int b){ return a+b; } public static int minus(int a, int b){ return a..."
 published: "2023-12-22T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

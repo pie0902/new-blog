@@ -2,7 +2,7 @@
 title: "2024.07.06 NAS TS-509 Pro vs Raspberrypi 4"
 description: "TS-509Pro The NAS I used to deploy Creww at home is called the TS-509 Pro, released by QNAP in 2009. Its specifications aren't particularly impressive; let's take a closer look below. Product Specifications CPU: Intel Celeron Processor 1.6GHz The ..."
 published: "2024-07-06T05:30:53.003Z"
-tags: []
+tags: ['NAS', '라즈베리 파이']
 series: "과거 Hashnode"
 ---
 

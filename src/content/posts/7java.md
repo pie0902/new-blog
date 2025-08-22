@@ -2,7 +2,7 @@
 title: "7.Java 기본 타입"
 description: "기본 타입 자바가 제공하는 기본 타입은 8개가 있습니다. 정수 타입실수 타입논리 타입 int , byte, char , long , shortfloat, doubleboolean 타입메모리사용크기저장되는 값의 허용 범위 byte1byte/8bit-2^7 ~ (2^7-1) / -128 ~ 127 short2byte/16bit-2^15 ~ (2^15-1) / -32.768 ~ 32.767 char2byte/16bit..."
 published: "2023-12-23T15:00:00.000Z"
-tags: []
+tags: ['Java']
 series: "과거 Hashnode"
 ---
 

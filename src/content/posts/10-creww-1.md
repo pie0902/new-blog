@@ -2,7 +2,7 @@
 title: "10. creww 쿼리개선(1)"
 description: "creww project 쿼리개선 시작 맨 처음 코드를 작성하면서 N+1 문제들을 생각 안하고 코드를 작성했다.그래서 도메인 순서대로 쿼리를 개선해야할지..어찌하지?생각하다가 일단 Postman을 실행시킨 뒤에 id가 1인 보드에 전체 게시글 요청을 보냈다.getPosts 라는 서비스 메서드를 먼저 해결하기로.. 문제점 쿼리 개선 전 서비스 로직 public Page<PostResponse> getPosts(Long boardId, int ..."
 published: "2024-06-28T09:55:38.601Z"
-tags: []
+tags: ['Java', '프로젝트', 'Creww']
 series: "과거 Hashnode"
 ---
 
