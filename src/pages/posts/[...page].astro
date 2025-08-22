@@ -10,7 +10,8 @@ export const getStaticPaths = (async () => {
   const sortedPosts = await getSortedPosts()
   return [
     {
-      params: { page: [] },
+      // For catch-all route, omit the param to target `/posts`
+      params: {},
       props: { posts: sortedPosts.reverse() },
     },
   ]
