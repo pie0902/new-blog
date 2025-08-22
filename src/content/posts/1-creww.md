@@ -25,7 +25,7 @@ Creww는 게시판을 만들고 글을 쓰고, 다른 사람들과 소통할 수
 
 #### ERD 다이어그램
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1716781402370/50c956c3-30ae-4bf6-b69d-8b36a66f6a80.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1716781402370/50c956c3-30ae-4bf6-b69d-8b36a66f6a80.png)
 
 Creww의 데이터베이스는 총 5개의 테이블로 구성되어 있다.
 

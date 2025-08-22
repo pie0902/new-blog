@@ -2,7 +2,7 @@
 import Layout from '~/layouts/Layout.astro'
 import { getSortedPosts } from '~/utils'
 import PageHeader from '~/components/PageHeader.astro'
-import InfinitePosts from '~/components/InfinitePosts.astro'
+import PostPreview from '~/components/PostPreview.astro'
 
 const posts = (await getSortedPosts()).reverse()
 const pageTitle = '전체 글'
@@ -11,7 +11,8 @@ const pageTitle = '전체 글'
 <Layout title={pageTitle} description="전체 글 목록">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    <InfinitePosts posts={posts} initialCount={12} step={12} />
+    {posts.map((post) => (
+      <PostPreview post={post} />
+    ))}
   </div>
 </Layout>
-

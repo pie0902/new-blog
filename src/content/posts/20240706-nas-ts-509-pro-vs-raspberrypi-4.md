@@ -8,7 +8,7 @@ series: "과거 Hashnode"
 
 # TS-509Pro
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720243645537/b631846e-893e-4eee-b7a6-f973d905ec3f.jpeg align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720243645537/b631846e-893e-4eee-b7a6-f973d905ec3f.jpeg)
 
 The NAS I used to deploy Creww at home is called the TS-509 Pro, released by QNAP in 2009. Its specifications aren't particularly impressive; let's take a closer look below.
 

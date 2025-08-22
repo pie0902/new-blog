@@ -22,6 +22,6 @@ series: "과거 Hashnode"
 
 SwaggerUI를 적용해서 API 명세서를 간단하게 만들고 캡쳐했다.
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1717861818826/3eae5fd3-6fa2-426a-afd7-7630201ee286.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1717861818826/3eae5fd3-6fa2-426a-afd7-7630201ee286.png)
 
 아직 완벽히 완성된 CRUD는 아니지만 서버를 배포해보고 CICD를 완성한다음 기능을 더 추가 해야겠다.

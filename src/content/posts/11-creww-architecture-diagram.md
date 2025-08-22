@@ -12,7 +12,7 @@ I have created an architecture diagram for Creww project. I should have made it 
 
 ### Architecture Diagram
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719643735387/73354842-c945-4b58-999c-15f0c25ec8e8.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719643735387/73354842-c945-4b58-999c-15f0c25ec8e8.png)
 
 ---
 

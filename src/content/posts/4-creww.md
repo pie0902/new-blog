@@ -36,7 +36,7 @@ public class Post extends BaseEntity {
 
 하지만 리액트로 만든 프론트에서 작동이 잘 된다 (로컬 환경)
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1717862376901/c779bfe0-1e52-416b-809c-9de0e9209829.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1717862376901/c779bfe0-1e52-416b-809c-9de0e9209829.png)
 
 별건 아니지만 그래도 결과물이 보이니깐 기분이 좋다.  
 Good!

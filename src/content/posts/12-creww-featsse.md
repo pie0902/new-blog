@@ -25,7 +25,7 @@ series: "과거 Hashnode"
 6. React에서 ajax를 통해 notificationService의 getNotification 메서드를 호출하여 userId에 해당하는 알림들을 조회한다. 이를 통해 로그인한 사용자를 대상으로 알림들을 화면에 표시한다.
     
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720543985007/111672b5-df5c-4755-afd5-ab47ab20209e.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720543985007/111672b5-df5c-4755-afd5-ab47ab20209e.png)
 
 알림 기능을 구현하고, 잘되네~ 하면서 쿼리도 개선하고, 테스트 코드도 작성하고 하는중에 뭔가 허전한 마음을 느꼈다. 알림의 개수를 표현하는 것을 놓치고 있었다. 재빨리 css를 만져서 화면에 숫자표시를 해놨다. 이제 동적으로 알림의 개수를 업데이트 해줘야한다.
 
@@ -188,15 +188,15 @@ series: "과거 Hashnode"
 1. 다른 id로 로그인을 한다.
     
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596326396/09acbb51-3d84-468f-9ec8-f2eedd42ba51.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596326396/09acbb51-3d84-468f-9ec8-f2eedd42ba51.png)
 
 2. 알림이 13개가 표시 되어있다.(클릭)
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596357792/a2e90754-879c-4ffd-ad5c-05f4d9131e48.png align="center")
+    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596357792/a2e90754-879c-4ffd-ad5c-05f4d9131e48.png)
     
     3. 여기서 모두 읽음 버튼을 누른다
         
-        ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596413446/e6d385fc-c1a5-496a-94c0-f7a4fef261ed.png align="center")
+        ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1720596413446/e6d385fc-c1a5-496a-94c0-f7a4fef261ed.png)
         
         알림 숫자가 0이 되고 알림이 모두 사라진다.
         

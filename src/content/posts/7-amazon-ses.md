@@ -84,7 +84,7 @@ AWS Simple Email Service (SES)는 아마존 웹 서비스(AWS)가 제공하는 �
 
 ### 구현 예시
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719644962675/a8b80a3b-bff4-4327-addf-ce5f1981e157.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719644962675/a8b80a3b-bff4-4327-addf-ce5f1981e157.png)
 
 1. **상태 정의**:
     

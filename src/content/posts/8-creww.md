@@ -20,7 +20,7 @@ series: "과거 Hashnode"
     
     #### 실제 Obsidian에 작성해서 진행중인 계획표이다.
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719393762101/8d107484-8ddb-4beb-ad5c-fcd8e921c208.png align="center")
+    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719393762101/8d107484-8ddb-4beb-ad5c-fcd8e921c208.png)
     
 
 ### 더 생각해보기
