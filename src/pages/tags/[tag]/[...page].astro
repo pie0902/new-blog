@@ -22,13 +22,28 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props
 const { tag } = Astro.params
+
+// Decode the slug for human-friendly display and SEO titles
+const decodedKey = (() => {
+  try {
+    return decodeURIComponent(tag ?? '')
+  } catch {
+    return tag ?? ''
+  }
+})()
+
+// Resolve the canonical title from the tags collection (e.g., 'C언어')
+const tagsGroupForTitle = await TagsGroup.build()
+const matchedTag = tagsGroupForTitle.collations.find((c) => c.key === decodedKey)
+const prettyTitle = matchedTag ? matchedTag.title : decodedKey
+
 const pageTitle =
-  `Tag: ${tag}` + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
+  `Tag: ${prettyTitle}` + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
 ---
 
 <Layout title={pageTitle} description={`All posts tagged with ${tag}`}>
   <div class="mt-2 sm:mt-0">
-    <PageHeader />
+    <PageHeader title={`Tag: ${prettyTitle}`} />
     {page.data.map((post) => <PostPreview post={post} />)}
     <Pagination
       prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}

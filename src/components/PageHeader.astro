@@ -5,7 +5,17 @@ interface Props {
 
 const { title } = Astro.props
 
-const splitPath: string[] = Astro.url.pathname.split('/').filter(Boolean) // Remove empty parts
+// Split path and decode each segment for human-friendly display
+const splitPath: string[] = Astro.url.pathname
+  .split('/')
+  .filter(Boolean)
+  .map((part) => {
+    try {
+      return decodeURIComponent(part)
+    } catch {
+      return part
+    }
+  })
 
 if (splitPath.length === 0) {
   splitPath.push('홈')
