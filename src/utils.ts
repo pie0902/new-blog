@@ -319,10 +319,14 @@ export class TagsGroup extends PostsCollationGroup {
 }
 
 export function slugify(title: string) {
+  // Unicode-friendly slug: keep letters/numbers from all langs, spaces and dashes
+  // Normalize to avoid mixed representations, collapse spaces, and lowercase
   return title
     .trim()
-    .replace(/[^A-Za-z0-9 ]/g, '')
+    .normalize('NFKD')
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
     .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '')
     .toLowerCase()
 }
