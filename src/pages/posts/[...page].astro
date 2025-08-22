@@ -2,74 +2,27 @@
 import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
 import { getSortedPosts } from '~/utils'
-import Pagination from '~/components/Pagination.astro'
-import siteConfig from '~/site.config'
-import PostPreview from '~/components/PostPreview.astro'
 import PageHeader from '~/components/PageHeader.astro'
-import BlockHeader from '~/components/BlockHeader.astro'
+import InfinitePosts from '~/components/InfinitePosts.astro'
 
-// Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
-export const getStaticPaths = (async ({ paginate }) => {
+// Switch to a single page with client-side infinite scroll
+export const getStaticPaths = (async () => {
   const sortedPosts = await getSortedPosts()
-  return paginate(sortedPosts.reverse(), { pageSize: siteConfig.pageSize })
+  return [
+    {
+      params: { page: [] },
+      props: { posts: sortedPosts.reverse() },
+    },
+  ]
 }) satisfies GetStaticPaths
 
-const { page } = Astro.props
-const pageTitle = '전체 글' + (page.currentPage > 1 ? ` - 페이지 ${page.currentPage}` : '')
-
-// Page 1: split the current paginated slice into current vs archived
-let currentPosts = []
-let archivedPosts = []
-if (page.currentPage === 1) {
-  archivedPosts = page.data.filter(
-    (p) => p.data.series && p.data.series.includes('과거'),
-  )
-  currentPosts = page.data.filter(
-    (p) => !(p.data.series && p.data.series.includes('과거')),
-  )
-}
+const { posts } = Astro.props
+const pageTitle = '전체 글'
 ---
 
 <Layout title={pageTitle} description="전체 글 목록">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    {
-      page.currentPage === 1 ? (
-        <>
-          {currentPosts.length > 0 && (
-            <section>
-              <BlockHeader>현재 글</BlockHeader>
-              {currentPosts.map((post) => (
-                <PostPreview post={post} />
-              ))}
-            </section>
-          )}
-          {archivedPosts.length > 0 && (
-            <section>
-              <BlockHeader>아카이브</BlockHeader>
-              {archivedPosts.map((post) => (
-                <PostPreview post={post} />
-              ))}
-            </section>
-          )}
-          <Pagination
-            prevLink={page.url.prev ? page.url.prev : undefined}
-            prevText="최신 글"
-            nextLink={page.url.next ? page.url.next : undefined}
-            nextText="이전 글"
-          />
-        </>
-      ) : (
-        <>
-          {page.data.map((post) => <PostPreview post={post} />)}
-          <Pagination
-            prevLink={page.url.prev ? page.url.prev : undefined}
-            prevText="최신 글"
-            nextLink={page.url.next ? page.url.next : undefined}
-            nextText="이전 글"
-          />
-        </>
-      )
-    }
+    <InfinitePosts posts={posts} initialCount={12} step={12} />
   </div>
 </Layout>

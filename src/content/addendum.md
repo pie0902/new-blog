@@ -4,4 +4,4 @@ avatarImage:
   alt: 'My avatar'
 ---
 
-Thanks for reading my blog post! Feel free to check out my other posts or contact me via the social links in the footer.
+블로그에 방문해주셔서 감사합니다. 문의가 있으시면 thunderbizlab@gmail.com로 연락주세요.

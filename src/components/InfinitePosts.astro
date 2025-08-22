@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostPreview from '~/components/PostPreview.astro'
+
+interface Props {
+  posts: CollectionEntry<'posts'>[]
+  initialCount?: number
+  step?: number
+}
+
+const { posts, initialCount = 12, step = 10 } = Astro.props
+---
+
+<div id="infinite-posts" class="flex flex-col gap-6">
+  {
+    posts.map((post, idx) => (
+      <div class={idx < initialCount ? 'post-item' : 'post-item is-hidden'} data-index={idx}>
+        <PostPreview post={post} />
+      </div>
+    ))
+  }
+  <div id="infinite-sentinel" aria-hidden="true"></div>
+</div>
+
+<script>
+  const STEP = Number({step}) || 10
+  const sentinel = document.getElementById('infinite-sentinel')
+  const container = document.getElementById('infinite-posts')
+  if (sentinel && container) {
+    const revealNext = () => {
+      const hidden = container.querySelectorAll('.post-item.is-hidden')
+      const toShow = Array.from(hidden).slice(0, STEP)
+      toShow.forEach((el) => el.classList.remove('is-hidden'))
+      if (container.querySelectorAll('.post-item.is-hidden').length === 0) {
+        observer.disconnect()
+        sentinel.remove()
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealNext()
+        }
+      })
+    }, { rootMargin: '200px' })
+    observer.observe(sentinel)
+  }
+</script>
+
+<style>
+  .post-item.is-hidden { display: none; }
+  #infinite-sentinel { height: 1px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .post-item { transition: opacity 0.2s ease; }
+  }
+</style>
+
