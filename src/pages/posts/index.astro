@@ -1,23 +1,10 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
 import { getSortedPosts } from '~/utils'
 import PageHeader from '~/components/PageHeader.astro'
 import InfinitePosts from '~/components/InfinitePosts.astro'
 
-// Switch to a single page with client-side infinite scroll
-export const getStaticPaths = (async () => {
-  const sortedPosts = await getSortedPosts()
-  return [
-    {
-      // For catch-all route, omit the param to target `/posts`
-      params: {},
-      props: { posts: sortedPosts.reverse() },
-    },
-  ]
-}) satisfies GetStaticPaths
-
-const { posts } = Astro.props
+const posts = (await getSortedPosts()).reverse()
 const pageTitle = '전체 글'
 ---
 
@@ -27,3 +14,4 @@ const pageTitle = '전체 글'
     <InfinitePosts posts={posts} initialCount={12} step={12} />
   </div>
 </Layout>
+
