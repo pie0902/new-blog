@@ -126,6 +126,14 @@ if (postData.tags && postData.tags.length > 0) {
     )
   }
   {
+    siteConfig.giscus && (
+      <section>
+        <DividerText text="댓글" />
+        <GiscusLoader />
+      </section>
+    )
+  }
+  {
     showSeries && series ? (
       <section>
         <DividerText text={`${series.title} 시리즈`} />
@@ -140,14 +148,6 @@ if (postData.tags && postData.tags.length > 0) {
         {next && <PostPreview post={next} />}
       </section>
     ) : null
-  }
-  {
-    siteConfig.giscus && (
-      <section>
-        <DividerText text="댓글" />
-        <GiscusLoader />
-      </section>
-    )
   }
   <ScrollUpButton />
 </Layout>
