@@ -4,10 +4,4 @@ declare module '@pagefind/default-ui' {
   }
 }
 
-interface ImportMetaEnv {
-  readonly PUBLIC_GA_MEASUREMENT_ID?: string
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+// No public GA env var used anymore

@@ -111,8 +111,8 @@ for (const [themeId, themeStyles] of Object.entries(resolvedThemes)) {
   cssLines.push(`}`)
 }
 let generatedCss: string = cssLines.join('\n')
-// Google Analytics 4 measurement ID (public env overrides hardcoded fallback)
-const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-8ND3S5Y20R'
+// Google Analytics 4 measurement ID (hardcoded per user request)
+const GA_MEASUREMENT_ID = 'G-8ND3S5Y20R'
 ---
 
 <!doctype html>
@@ -160,13 +160,13 @@ const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-8ND3S5Y
       <>
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-8ND3S5Y20R"
         ></script>
           <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
-            gtag('config', '{GA_MEASUREMENT_ID}', { send_page_view: true });
+            gtag('config', 'G-8ND3S5Y20R', { send_page_view: true });
           </script>
 
       </>
