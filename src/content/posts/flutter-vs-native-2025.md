@@ -1,6 +1,6 @@
 ---
 title: '플러터 vs. 네이티브 앱 개발: 초보자를 위한 가이드'
-published: '2025-09-11T18:11:00.240Z'
+published: '2025-09-16T17:46:00.240Z'
 tags: ['앱개발', 'flutter']
 series: '앱개발'
 description: '플러터와 네이티브 앱의 차이를 2025년 기준으로 정리. 장단점·비용·성능 비교, React Native vs Flutter, 환경 설정과 로드맵, Firebase 활용까지 한 번에 확인.'
