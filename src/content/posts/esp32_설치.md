@@ -1,6 +1,6 @@
 ---
-title: '플러터 vs. 네이티브 앱 개발: 초보자를 위한 가이드'
-published: '2025-09-16T17:46:00.240Z'
+title: 'esp32 공부하기(1)'
+published: '2025-09-20T18:54:00.240Z'
 tags: ['임베디드', 'esp32']
 series: 'esp32'
 description: 'esp32 프로젝트 설정'
