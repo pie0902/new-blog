@@ -143,4 +143,4 @@ idf.py -p /dev/cu.usbserial-0001 monitor
 이 과정을 반복하면서 FreeRTOS Task, 센서, 네트워킹 기능을 점점 추가하면 된다.
 
 스크립트를 만들면 편할 것 같지만, 학습할때는 일단 직접 해봐야겠다.
-![hello world 출력](<images/esp32/esp32(1).png>)
+![hello world 출력](/images/esp32/hello.png)
