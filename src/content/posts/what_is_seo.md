@@ -3,7 +3,7 @@ title: 'SEO는 무엇일까?'
 description: 'SEO에 대해서 설명하는 블로그 포스트.'
 published: '2025-10-01T14:49:26.948Z'
 tags: ['Blog', 'SEO']
-series: '과거 Hashnode'
+series: '웹개발'
 ---
 
 # SEO란 무엇인가?
@@ -68,7 +68,7 @@ series: '과거 Hashnode'
 
 ## 그래서 SEO를 적용했더니 체감이 됐나?
 
-<img src="/images/google/ga4.png" alt="구글 애널리틱스" style="width:100%; max-width:260px; height:auto; border-radius:2px;" loading="lazy" />
+<img src="/images/google/ga4.png" alt="구글 애널리틱스" style="width:100%; max-width:400px; height:auto; border-radius:2px;" loading="lazy" />
 
 확실히 SEO를 신경 쓰고 구글 키워드 플래너까지 활용하니까, 신기하게도 트래픽이 올라갔다.  
 SEO 할 수 있는 건 다 해두고 아무것도 안 하고 내버려뒀는데, 공개한 지 한 달 만에 트래픽이 100을 넘어갔다.  
